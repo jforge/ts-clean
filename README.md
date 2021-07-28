@@ -5,7 +5,7 @@
 
 ## Overview
 
-> A Tool For Cleaning Up JavaScript File Built By TypeScript
+> A tool for cleaning up JavaScript files compiled from TypeScript
 
 ## Install
 
@@ -67,4 +67,4 @@ If you installed ts-clean in the global installation environment, you can use `t
 
 ## LICENSE
 
-MIT@[PLDaily](https://github.com/PLDaily)
+MIT@[jforge](https://github.com/jforge)

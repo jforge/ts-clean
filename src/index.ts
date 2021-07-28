@@ -1,11 +1,10 @@
-import * as glob from 'globby';
 import * as path from 'path';
 import * as fs from 'fs';
+import * as glob from 'globby';
 
 export function cleanJs(cwd: string, etxArr: string[]): void {
   let fileList: string[] = [];
-  glob
-  .sync(['**/*.ts', '**/*.tsx', '!**/*.d.ts', '!**/node_modules'], { cwd })
+  glob.sync(['**/*.ts', '**/*.tsx', '!**/*.d.ts', '!**/node_modules'], { cwd })
     .forEach(f => {
       const jf = removeSameNameJs(path.resolve(cwd, f), etxArr);
       fileList = [...fileList, ...jf];

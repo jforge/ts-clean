@@ -1,12 +1,9 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const glob = require("globby");
-const path = require("path");
-const fs = require("fs");
-function cleanJs(cwd, etxArr) {
+import * as path from 'path';
+import * as fs from 'fs';
+import * as glob from 'globby';
+export function cleanJs(cwd, etxArr) {
     let fileList = [];
-    glob
-        .sync(['**/*.ts', '**/*.tsx', '!**/*.d.ts', '!**/node_modules'], { cwd })
+    glob.sync(['**/*.ts', '**/*.tsx', '!**/*.d.ts', '!**/node_modules'], { cwd })
         .forEach(f => {
         const jf = removeSameNameJs(path.resolve(cwd, f), etxArr);
         fileList = [...fileList, ...jf];
@@ -16,8 +13,7 @@ function cleanJs(cwd, etxArr) {
         console.info('  ' + fileList.filter(it => it.length > 0).join('\n  ') + '\n');
     }
 }
-exports.cleanJs = cleanJs;
-function removeSameNameJs(f, etxArr) {
+export function removeSameNameJs(f, etxArr) {
     if (!f.endsWith('.ts') && !f.endsWith('.tsx') || f.endsWith('.d.ts')) {
         return [];
     }
@@ -30,5 +26,4 @@ function removeSameNameJs(f, etxArr) {
         return '';
     });
 }
-exports.removeSameNameJs = removeSameNameJs;
 //# sourceMappingURL=index.js.map

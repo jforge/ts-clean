@@ -1,21 +1,19 @@
 #!/usr/bin/env node
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const meow = require("meow");
-const chalk_1 = require("chalk");
-const index_1 = require("./index");
+import meow from 'meow';
+import * as chalk from 'chalk';
+import { cleanJs } from './index';
 const PWD = process.cwd();
-const cli = meow({
-    help: `
-    ${chalk_1.default.bold('Description')}
+const cli = meow(`
+    ${chalk.bold('Description')}
       $ A tool for cleaning up JavaScript files compiled from TypeScript
-    ${chalk_1.default.bold('Usage')}
+    ${chalk.bold('Usage')}
       $ ts-clean -d <source>
-    ${chalk_1.default.bold('Options')}
+    ${chalk.bold('Options')}
       -d, --dir               directory(default pwd)
       -e, --etx               extension(default .js,.js.map,.jsx,.jsx.map)
       -v, --version           version
-  `,
+  `, {
+    importMeta: import.meta,
     flags: {
         dir: {
             type: 'string',
@@ -33,6 +31,6 @@ const cli = meow({
 const dirArr = cli.flags.dir.split(',');
 const extArr = cli.flags.ext.split(',');
 dirArr.map((item) => {
-    index_1.cleanJs(item, extArr);
+    cleanJs(item, extArr);
 });
 //# sourceMappingURL=bin.js.map
